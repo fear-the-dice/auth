@@ -5,7 +5,7 @@ import scalate.ScalateSupport
 import authentikat.jwt._
 import com.redis._
 
-class FTDAuth extends FearTheDiceAuthServerStack {
+class FTDAuth extends FearTheDiceAuthStack {
   val r = new RedisClient("localhost", 6379)
   val header: JwtHeader = JwtHeader("HS256")
   val expiry: Int = 86400
@@ -37,3 +37,4 @@ class FTDAuth extends FearTheDiceAuthServerStack {
   }
 
 }
+
