@@ -35,7 +35,8 @@ object FearTheDiceAuthServerBuild extends Build {
         "org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "compile;container",
         "org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "compile;container",
         "javax.servlet" % "javax.servlet-api" % "3.1.0",
-        "com.jason-goodwin" %% "authentikat-jwt" % "0.4.1"
+        "com.jason-goodwin" %% "authentikat-jwt" % "0.4.1",
+        "net.debasishg" %% "redisclient" % "3.0"
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(
