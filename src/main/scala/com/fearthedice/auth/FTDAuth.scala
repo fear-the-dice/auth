@@ -4,6 +4,7 @@ import org.scalatra._
 import scalate.ScalateSupport
 import authentikat.jwt._
 import com.redis._
+import org.scalatra.CorsSupport
 
 class FTDAuth extends FearTheDiceAuthStack {
   val r = new RedisClient("localhost", 6379)
@@ -29,7 +30,16 @@ class FTDAuth extends FearTheDiceAuthStack {
     jwt = JsonWebToken(header, claimsSet, "secretkey") 
     r.setex("ftd/" + sub + "/" + uuid, 86400, 0)
 
+    response.setHeader("Access-Control-Allow-Headers", "Origin,Accept,Content-Type,Authorization,X-HTTP-Method-Override")
+    response.setHeader("Access-Control-Allow-Methods", "GET")
+    response.setHeader("Access-Control-Allow-Origin", "*")
+
     contentType="text/html"
+  }
+  options("/") {
+    response.setHeader("Access-Control-Allow-Headers", "Origin,Accept,Content-Type,Authorization,X-HTTP-Method-Override")
+    response.setHeader("Access-Control-Allow-Methods", "GET")
+    response.setHeader("Access-Control-Allow-Origin", "*")
   }
 
   get("/") {
