@@ -11,7 +11,7 @@ import ScalateKeys._
 object FearTheDiceAuthBuild extends Build {
   val Organization = "com.fearthedice"
   val Name = "Fear The Dice Auth"
-  val Version = "0.0.0"
+  val Version = "0.1.0"
   val ScalaVersion = "2.11.6"
   val ScalatraVersion = "2.4.0.RC1"
 
