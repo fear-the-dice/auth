@@ -11,6 +11,8 @@ class FTDAuth extends FearTheDiceAuthStack {
   val header: JwtHeader = JwtHeader("HS256")
   val expiry: Int = 86400
   val sub:String = "8205d3b2-3e73-432b-b7eb-b73f73818d83"
+  val keySrc:scala.io.BufferedSource = scala.io.Source.fromFile("/usr/local/keys/FTDAuth_pk8.rsa")
+  val key:String = try keySrc.mkString finally keySrc.close()
 
   var jwt: String = _
 
@@ -27,7 +29,8 @@ class FTDAuth extends FearTheDiceAuthStack {
       )
     )
 
-    jwt = JsonWebToken(header, claimsSet, "secretkey") 
+    jwt = JsonWebToken(header, claimsSet, key) 
+
     r.setex("ftd/" + sub + "/" + uuid, 86400, 0)
 
     response.setHeader("Access-Control-Allow-Headers", "Origin,Accept,Content-Type,Authorization,X-HTTP-Method-Override")
