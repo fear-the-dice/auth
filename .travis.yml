@@ -4,3 +4,7 @@ scala:
 notifications:
   email:
     - jeffhann@gmail.com 
+before_install:
+  - ./generate_keys.sh
+script: "sbt clean coverage test"
+after_success: "sbt coveralls"
