@@ -13,4 +13,12 @@ class FTDAuthSpec extends MutableScalatraSpec {
       }
     }
   }
+
+  "OPTIONS / on FTDAuth" should {
+    "return status 200" in {
+      options("/") {
+        status must_== 200
+      }
+    }
+  }
 }
