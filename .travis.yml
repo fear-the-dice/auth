@@ -11,5 +11,5 @@ notifications:
     - jeffhann@gmail.com 
 before_install:
   - sudo ./generate_keys.sh
-script: cd $TEST_DIR && ./sbt clean coverage test
-after_success: cd $TEST_DIR && ./sbt coveralls
+script: "sbt clean coverage test"
+after_success: "sbt coveralls"
