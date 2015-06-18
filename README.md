@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/fear-the-dice/auth/badge.svg)](https://coveralls.io/r/fear-the-dice/auth)
 [![Build Status](https://travis-ci.org/fear-the-dice/auth.svg)](https://travis-ci.org/fear-the-dice/auth)
 
 #Fear the Dice
