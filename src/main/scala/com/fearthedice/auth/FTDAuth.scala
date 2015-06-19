@@ -11,8 +11,7 @@ class FTDAuth extends FearTheDiceAuthStack {
   val header: JwtHeader = JwtHeader("HS256")
   val expiry: Int = 86400
   val sub:String = "8205d3b2-3e73-432b-b7eb-b73f73818d83"
-  val keySrc:scala.io.BufferedSource = scala.io.Source.fromFile("/usr/local/keys/FTDAuth_pk8.rsa")
-  val key:String = try keySrc.mkString finally keySrc.close()
+  val key:String = sys.env("FTDAUTHKEY") 
 
   var jwt: String = _
 
