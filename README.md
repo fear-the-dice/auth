@@ -1,6 +1,7 @@
 [![GitHub tag](https://img.shields.io/github/tag/fear-the-dice/auth.svg)](https://github.com/fear-the-dice/auth/tags)
 [![GitHub issues](https://img.shields.io/github/issues/fear-the-dice/auth.svg)](https://github.com/fear-the-dice/auth/issues)
 [![Coverage Status](https://coveralls.io/repos/fear-the-dice/auth/badge.svg)](https://coveralls.io/r/fear-the-dice/auth)
+[![Codacy Badge](https://www.codacy.com/project/badge/93c950a9621a4754b15d30c11f28974e)](https://www.codacy.com/app/jeffhann/fear-the-dice-auth)
 [![Build Status](https://travis-ci.org/fear-the-dice/auth.svg)](https://travis-ci.org/fear-the-dice/auth)
 [![GitHub license](https://img.shields.io/github/license/fear-the-dice/auth.svg)]()
 
