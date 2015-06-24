@@ -6,6 +6,7 @@
 *.out
 .history
 keys/*
+.env
 
 # rails specific
 *.sqlite3

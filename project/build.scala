@@ -1,6 +1,8 @@
 import com.earldouglas.xsbtwebplugin.PluginKeys._
 import com.earldouglas.xsbtwebplugin.WebPlugin._
 
+import com.typesafe.sbt.packager.archetypes.JavaAppPackaging
+
 import sbt._
 import Keys._
 import org.scalatra.sbt._
@@ -32,8 +34,8 @@ object FearTheDiceAuthBuild extends Build {
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
         "ch.qos.logback" % "logback-classic" % "1.1.2" % "runtime",
-        "org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "container",
-        "org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "container",
+        "org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "compile;container",
+        "org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "compile;container",
         "javax.servlet" % "javax.servlet-api" % "3.1.0",
         "com.jason-goodwin" %% "authentikat-jwt" % "0.4.1",
         "net.debasishg" %% "redisclient" % "3.0"
@@ -51,5 +53,5 @@ object FearTheDiceAuthBuild extends Build {
         )
       }
     )
-  )
+  ).enablePlugins(JavaAppPackaging)
 }
