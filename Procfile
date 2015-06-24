@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/fear-the-dice-auth-server -Dhttp.port=$PORT
+web: target/universal/stage/bin/fear-the-dice-auth -Dhttp.port=$PORT
