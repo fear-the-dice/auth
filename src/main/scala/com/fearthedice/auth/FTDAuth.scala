@@ -7,7 +7,7 @@ import com.redis._
 import org.scalatra.CorsSupport
 
 class FTDAuth extends FearTheDiceAuthStack {
-  val r = new RedisClient("localhost", 6379)
+  val r = new RedisClient(sys.env("REDISHOST"), sys.env("REDISPORT").toInt, 0, Some(sys.env("REDISPASSWORD")))
   val header: JwtHeader = JwtHeader("HS256")
   val expiry: Int = 86400
   val sub:String = "8205d3b2-3e73-432b-b7eb-b73f73818d83"
