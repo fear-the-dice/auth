@@ -11,11 +11,19 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/obihann/gin-cors"
 	"github.com/satori/go.uuid"
+
+	log "github.com/Sirupsen/logrus"
 )
 
 var (
 	pool *redis.Pool
 )
+
+func init() {
+	log.SetFormatter(&log.JSONFormatter{})
+	log.SetOutput(os.Stderr)
+	log.SetLevel(log.WarnLevel)
+}
 
 func main() {
 	type ()
@@ -66,13 +74,17 @@ func main() {
 			tokenString, err := buildToken(uuid, sub)
 
 			if err != nil {
+				log.Panic("Failed to build token string.")
 				c.AbortWithError(http.StatusInternalServerError, err)
+				return
 			}
 
 			err = storeToken(tokenString, uuid, sub)
 
 			if err != nil {
+				log.Panic("Failed to store token in redis.")
 				c.AbortWithError(http.StatusInternalServerError, err)
+				return
 			}
 
 			c.JSON(200, gin.H{
