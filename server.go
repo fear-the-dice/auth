@@ -22,7 +22,7 @@ var (
 func init() {
 	log.SetFormatter(&log.JSONFormatter{})
 	log.SetOutput(os.Stderr)
-	log.SetLevel(log.WarnLevel)
+	log.SetLevel(log.DebugLevel)
 }
 
 func main() {
@@ -74,7 +74,7 @@ func main() {
 			tokenString, err := buildToken(uuid, sub)
 
 			if err != nil {
-				log.Panic("Failed to build token string.")
+				log.Fatal("Failed to build token string.")
 				c.AbortWithError(http.StatusInternalServerError, err)
 				return
 			}
@@ -82,7 +82,11 @@ func main() {
 			err = storeToken(tokenString, uuid, sub)
 
 			if err != nil {
-				log.Panic("Failed to store token in redis.")
+				log.WithFields(log.Fields{
+					"error":   err,
+					"port":    port,
+					"authKey": authKey,
+				}).Fatal(err)
 				c.AbortWithError(http.StatusInternalServerError, err)
 				return
 			}
